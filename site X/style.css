@@ -1,0 +1,266 @@
+/* Загальні стилі та скидання */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    scroll-behavior: smooth; /* Плавна прокрутка до секцій */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Шапка сайту */
+header {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 15px 0;
+    position: sticky; /* Фіксована шапка при прокрутці */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #e74c3c;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    left: 0;
+    background: #e74c3c;
+}
+
+nav ul li a:hover {
+    color: #e74c3c;
+}
+
+/* Секція-герой */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1500x800/2980b9/FFFFFF?text=Природа') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 150px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Висота екрану */
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero p {
+    font-size: 1.5em;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Анімації для геро-секції */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Секції тварин */
+.animal-section {
+    padding: 80px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    overflow: hidden; /* Щоб уникнути виходу вмісту */
+}
+
+.animal-section:nth-child(even) { /* Чергування фону для кращої візуалізації */
+    background-color: #f9f9f9;
+}
+
+.animal-content {
+    display: flex;
+    flex-wrap: wrap; /* Дозволяє переносити елементи на новий рядок на малих екранах */
+    align-items: center;
+    gap: 40px; /* Відстань між зображенням і текстом */
+}
+
+.animal-content img {
+    flex: 1; /* Зображення займає доступне місце */
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.5s ease;
+    object-fit: cover;
+    min-width: 300px; /* Мінімальна ширина для зображення */
+}
+
+.animal-content:hover img {
+    transform: scale(1.02);
+}
+
+.animal-content .text-content {
+    flex: 1; /* Текст займає доступне місце */
+    max-width: 50%;
+    min-width: 300px; /* Мінімальна ширина для тексту */
+}
+
+.animal-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #e74c3c;
+    padding-bottom: 10px;
+    display: inline-block; /* Щоб бордер був лише під текстом */
+}
+
+.animal-section p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Зміна порядку для "reverse" секцій */
+.animal-section.reverse .animal-content {
+    flex-direction: row-reverse;
+}
+
+/* Футер */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 100px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+
+    .animal-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .animal-content img,
+    .animal-content .text-content {
+        max-width: 100%;
+        min-width: unset;
+        text-align: center;
+    }
+
+    .animal-section.reverse .animal-content {
+        flex-direction: column; /* Знову колонки на мобільних */
+    }
+
+    .animal-section h2 {
+        font-size: 2em;
+        text-align: center;
+        width: 100%; /* Щоб бордер був по центру */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .logo a {
+        font-size: 1.5em;
+    }
+
+    .animal-section h2 {
+        font-size: 1.8em;
+    }
+}
